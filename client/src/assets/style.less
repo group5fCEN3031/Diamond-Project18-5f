@@ -1,0 +1,79 @@
+
+#colors() {
+    primary: #3D5C82;
+    secondary: #5BABDE;
+    tertiary: #F4F4F5;
+    quaternary: #F3D250;
+    quinary:#F1C307; 
+    senary: #E9E9E9;
+    text-primary: #414141;
+    text-secondary: #FFFFFF;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: #colors[primary];
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.vertical-container {
+    margin: 1.5em;
+}
+
+.hvr-info {
+    cursor: pointer;
+}
+
+.card {
+    background-color: #colors[tertiary];
+    padding: .7em;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.nav-padding {
+    padding-top: 8vh;
+}
+
+.replayButton {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "units",
+  "info": {
+    "name": "unit"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "grade": {
+      "model": "grade",
+      "via": "units"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "standards_id": {
+      "type": "string"
+    },
+    "standards_description": {
+      "type": "text"
+    },
+    "number": {
+      "type": "integer",
+      "required": true
+    },
+    "lesson_modules": {
+      "via": "unit",
+      "collection": "lesson-module"
+    }
+  }
+}

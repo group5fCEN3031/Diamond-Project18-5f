@@ -1,0 +1,27 @@
+{
+  "routes": {
+    "TeacherLogin": "/teacherlogin",
+    "Sandbox": "/sandbox",
+    "About": "/about",
+    "Home": "/",
+    "Dashboard": "/dashboard",
+    "SignOut": "/",
+    "AccountInfo": "/account",
+    "ContentCreatorDashboard": "/ccdashboard",
+    "ResearcherDashboard": "/report",
+    "BugReport": "/bugreport"
+  },
+  "users": {
+    "DefaultUser": ["Home", "TeacherLogin", "Sandbox", "About"],
+    "Mentor": ["Dashboard", "AccountInfo", "SignOut", "Sandbox", "BugReport"],
+    "Student": ["SignOut"],
+    "ContentCreator": [
+      "ContentCreatorDashboard",
+      "AccountInfo",
+      "Sandbox",
+      "SignOut",
+      "BugReport"
+    ],
+    "Researcher": ["ResearcherDashboard", "BugReport", "SignOut"]
+  }
+}

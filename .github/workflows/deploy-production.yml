@@ -1,0 +1,30 @@
+name: Deploy Production
+on:
+  release:
+    types: [created]
+    branches: [master]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+      - name: Built, test, and deploy app
+        uses: STEM-C/auto/build-test-deploy@v0.7.2
+        with:
+          image_tag: ${{ steps.get_version.outputs.VERSION }}
+          app_name: casmm
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_TOKEN }}
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: engaging-learning-lab-uf
+          SENTRY_PROJECT: casmm
+        with:
+          environment: production

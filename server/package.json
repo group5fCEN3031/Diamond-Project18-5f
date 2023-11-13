@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A REST API and admin portal",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "build-client": "rm -rf ./public/client/* && cd ../client && env PUBLIC_URL=/client yarn build && mv ./build/* ../server/public/client/"
+  },
+  "dependencies": {
+    "bull": "^4.10.0",
+    "dotenv": "^10.0.0",
+    "knex": "0.21.18",
+    "pg": "^8.10.0",
+    "redis-url-parse": "^2.0.0",
+    "sharp": "^0.31.3",
+    "strapi": "^3.6.11",
+    "strapi-admin": "^3.6.11",
+    "strapi-connector-bookshelf": "^3.6.11",
+    "strapi-plugin-content-manager": "^3.6.11",
+    "strapi-plugin-content-type-builder": "^3.6.11",
+    "strapi-plugin-documentation": "^3.6.11",
+    "strapi-plugin-email": "^3.6.11",
+    "strapi-plugin-sentry": "^3.6.11",
+    "strapi-plugin-users-permissions": "^3.6.11",
+    "strapi-provider-email-nodemailer": "^3.6.11",
+    "strapi-utils": "^3.6.11"
+  },
+  "author": {
+    "name": "Nicholas Ionata, Siyu Chen"
+  },
+  "strapi": {
+    "uuid": "d9c4d9b6-4733-4e82-80ee-0a812c951edb"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

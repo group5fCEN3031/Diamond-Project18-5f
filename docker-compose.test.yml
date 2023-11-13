@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  server:
+    container_name: casmm-server-test
+    image: strapi/strapi
+    restart: always
+    environment: 
+      - DATABASE_HOST=db
+    ports:
+      - 1337:1337
+    volumes:
+      - ./server:/srv/app
+    depends_on:
+      - db
+      - compile_queue
+  compile:
+    container_name: casmm-compile-test
+    build: ./compile
+    restart: always
+    depends_on:
+      - compile_queue
+  db:
+    container_name: casmm-db-test
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      ENVIRONMENT: test
+      DATABASE_URL: strapi
+      SCRIPT_PATH: /docker-entrypoint-initdb.d
+  compile_queue:
+    container_name: casmm-compile_queue-test
+    image: redis
+    restart: always

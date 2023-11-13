@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/bug-report",
+      "handler": "Email.send",
+      "config": {}
+    }
+  ]
+}

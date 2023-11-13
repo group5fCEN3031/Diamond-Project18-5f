@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "saves",
+  "info": {
+    "name": "save",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "activity": {
+      "model": "activity"
+    },
+    "student": {
+      "model": "student"
+    },
+    "workspace": {
+      "type": "text",
+      "required": true
+    },
+    "replay": {
+      "type": "json"
+    },
+    "session": {
+      "via": "saves",
+      "model": "session"
+    }
+  }
+}
