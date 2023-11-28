@@ -53,7 +53,13 @@ const MultipleChoiceInput = ({ pauseBreakTime, onInteractionSubmit, isVideoPause
           /> Correct
         </div>
       ))}
-      <button onClick={handleSubmit}>Submit Options</button>
+      <button 
+        onClick={handleSubmit} 
+        disabled={options.some(option => !option) || correctIndex === null} // Disable if any option is empty or no correct option is selected
+        className="submit-button" // Add a class for styling
+      >
+        Submit Options
+      </button>
     </div>
   );
 };

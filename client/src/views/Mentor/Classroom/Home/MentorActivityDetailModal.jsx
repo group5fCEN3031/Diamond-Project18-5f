@@ -27,15 +27,26 @@ const MentorActivityDetailModal = ({
   const [StandardS, setStandardS] = useState("")
   const [images, setImages] = useState("")
   const [link, setLink] = useState("")
-  const [videoLink, setVideoLink] = useState("")
+  const [additionalLink, setAdditionalLink] = useState("")
   const [visible, setVisible] = useState(false);
   const [scienceComponents, setScienceComponents] = useState([])
   const [makingComponents, setMakingComponents] = useState([])
   const [computationComponents, setComputationComponents] = useState([])
   const [activityDetailsVisible, setActivityDetailsVisible] = useState(false)
   const [linkError, setLinkError] = useState(false)
+  const [additionalLinkError, setAdditionalLinkError] = useState(false)
   const [submitButton, setSubmitButton] = useState(0)
   const navigate = useNavigate()
+
+  const handleYouTubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value);
+  };
+
+  const getYouTubeEmbedLink = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : null;
+  };
 
   useEffect(() => {
     const showActivityDetailsModal = async () => {
@@ -250,7 +261,7 @@ const MentorActivityDetailModal = ({
         <h3 id="subtitle">Additional Information</h3>
         <Form.Item
           id="form-label"
-          label="Link to Additional Resources (Optional)"
+          label="Upload Video URL"
         >
           <Input
             onChange={e => {
@@ -260,6 +271,33 @@ const MentorActivityDetailModal = ({
             className="input"
             value={link}
             style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
+            placeholder="Enter a link"
+          ></Input>
+        </Form.Item>
+
+        {link && (
+        <iframe
+          width="560"
+          height="315"
+          src={getYouTubeEmbedLink(link)}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
+
+        <Form.Item
+          id="form-label"
+          label="Link to Additional Resources (Optional)"
+        >
+          <Input
+            onChange={e => {
+              setAdditionalLink(e.target.value)
+              setAdditionalLinkError(false)
+            }}
+            className="input"
+            value={additionalLink}
+            style={additionalLinkError ? { backgroundColor: "#FFCCCC" } : {}}
             placeholder="Enter a link"
           ></Input>
         </Form.Item>
