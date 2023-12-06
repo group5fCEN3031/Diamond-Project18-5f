@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./TextBox.less";
 
 const TextBox = ({ pauseBreaks, isVideoPaused, currentTime, onInteractionSubmit }) => {
   const [text, setText] = useState('');
@@ -34,18 +35,21 @@ const TextBox = ({ pauseBreaks, isVideoPaused, currentTime, onInteractionSubmit 
 
   return (
     <div>
-      <button onClick={handleButtonClick}>
-        {showTextBox ? 'Remove Text Box' : 'Text Box'}
+      <button onClick={handleButtonClick} id = "add-textbox-btn">
+        {showTextBox ? '- Remove Text Box' : '+ Add a Text Box'}
       </button>
 
       {showTextBox && (
         <div>
           <textarea
+            id = "text-entry-textbox"
             value={text}
             onChange={handleChange}
             placeholder="Enter text here..."
           />
-          <button onClick={handleSubmit}>Submit Text</button>
+          <button onClick={handleSubmit} id = "submit-textbox-btn">
+            Submit Text
+            </button>
         </div>
       )}
     </div>

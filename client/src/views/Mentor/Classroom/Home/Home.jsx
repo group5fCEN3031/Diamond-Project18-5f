@@ -172,8 +172,10 @@ export default function Home({ classroomId, viewing }) {
                           {activity.description}
                         </p>
                         <p>
-                          <strong>Video: TEST</strong>
-                          
+                          <strong>Video: </strong>
+                          <a href={activity.link} target='_blank' rel='noreferrer'>
+                              {activity.link}
+                            </a>
                         </p>
                         <p>
                           <strong>Classroom Materials: </strong>

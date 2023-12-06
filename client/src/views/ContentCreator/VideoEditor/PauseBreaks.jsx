@@ -1,4 +1,5 @@
 import React from 'react';
+import "./PauseBreaks.less";
 
 const PauseBreaks = ({ pauseBreaks, onAddPauseBreak, onRemovePauseBreak, isVideoPaused, playerRef }) => {
   const handleAddPauseBreak = (event) => {
@@ -19,13 +20,15 @@ const PauseBreaks = ({ pauseBreaks, onAddPauseBreak, onRemovePauseBreak, isVideo
 
   return (
     <div>
-      <button onClick={handleAddPauseBreak}>
-        Add Pause-Break
+      <button onClick={handleAddPauseBreak} id = "add-pause-btn">
+        + Add a Pause-Break
       </button>
       <ul>
         {pauseBreaks.map((pauseBreak, index) => (
           <li key={index}>
-            <button onClick={() => onRemovePauseBreak(pauseBreak)}>Remove</button>
+            <button onClick={() => onRemovePauseBreak(pauseBreak)}  id = "rem-pause-btn">
+              - Remove Pause-Break
+              </button>
           </li>
         ))}
       </ul>

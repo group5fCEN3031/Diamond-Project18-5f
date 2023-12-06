@@ -87,6 +87,14 @@ export default function ContentCreator() {
       align: 'left',
     },
     {
+      title: 'Video',
+      dataIndex: 'youtubeLink',
+      key: 'character',
+      editable: true,
+      width: '12.5%',
+      align: 'left',
+    },
+    {
       title: 'Delete',
       dataIndex: 'delete',
       key: 'delete',
